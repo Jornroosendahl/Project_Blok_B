@@ -9,3 +9,11 @@ def eerste_spel_naam():
         if 'name' in i:
             naam = spel[i]
     return naam
+
+def steam_sort():
+    lijst = sorted(data,key=lambda i: i['price'])
+    #,reverse=True om om te keren --- price veranderen in iets anders om daarop te sorteren
+    return lijst
+
+
+
