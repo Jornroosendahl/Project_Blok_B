@@ -9,7 +9,7 @@ root.title('Steam')
 #window icon
 root.iconphoto(False,tkinter.PhotoImage(file='Steam.png'))
 #resizing is false
-root.resizable(width=False,height=False)
+root.resizable(width=True,height=False)
 #set window size
 root.geometry('500x400')
 
