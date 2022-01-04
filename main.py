@@ -3,7 +3,7 @@ import json
 with open('steam.json') as json_file:
     data = json.load(json_file)
 
-teller = 0
+teller = -1
 def eerste_spel_naam():
     spel = data[teller]
     for i in spel:
@@ -12,6 +12,7 @@ def eerste_spel_naam():
     return naam
 
 def eerste_spel_info():
+    global teller
     spel = data[teller]
     for i in spel:
         if 'appid' in i:
@@ -23,6 +24,7 @@ def eerste_spel_info():
         if 'price' in i:
             price = 'Price:' + str(spel[i])
     info = app_id + '\n' + release_date + '\n' + genre + '\n' + price
+    teller +=1
     return info
 
 def steam_sort():

@@ -19,50 +19,60 @@ var_naam.set(eerste_spel_naam())
 var_info = StringVar()
 var_info.set(eerste_spel_info())
 
-def info():
-    label_naam = Label  (
+label_naam = Label  (
                     master=root,
                     textvariable=var_naam,
                     background='white',
                     font='Helvetica 25 bold'
                     )
-    label_naam.grid(
-                    row=0,
-                    column=0,
-                    sticky=''
-                    )
-    label_info = Message(
+label_info = Message(
                     master=root,
                     background='white',
                     width=180,
                     textvariable=var_info
                     )
-    label_info.grid     (
+def show_info():
+    var_naam.set(eerste_spel_naam())
+    label_naam.config(textvariable=var_naam)
+    var_info.set(eerste_spel_info())
+    label_info.config(textvariable=var_info)
+    label_naam.grid(
+                    row=0,
+                    column=0,
+                    sticky=''
+                    )
+    label_info.grid (
                     row=0,
                     column=1,
                     sticky=''
                     )
-
-def volgende():
-    info()
     global teller
     teller +=1
-left_button = Button(
+def hide_info():
+    label_naam.grid_forget()
+    label_info.grid_forget()
+def hide_show():
+    hide_info()
+    show_info()
+
+
+
+back_button = Button(
                     master=root,
                     text='Back',
-                    command = '',
+                    command = hide_info,
                     )
-left_button.grid    (
+back_button.grid    (
                     row=1,
                     column=0,
                     sticky='nes'
                     )
-right_button = Button(
+next_button = Button(
                     master=root,
                     text='Next',
-                    command = info
+                    command = hide_show
                     )
-right_button.grid   (
+next_button.grid   (
                     row=1,
                     column=1,
                     sticky='w'
