@@ -57,24 +57,24 @@ def hide_show():
 
 
 
-back_button = Button(
-                    master=root,
-                    text='Back',
-                    command = hide_info,
-                    )
-back_button.grid    (
-                    row=1,
-                    column=0,
-                    sticky='nes'
-                    )
+# back_button = Button(
+#                     master=root,
+#                     text='Back',
+#                     command = hide_info,
+#                     )
+# back_button.grid    (
+#                     row=1,
+#                     column=0,
+#                     sticky='w'
+#                     )
 next_button = Button(
                     master=root,
                     text='Next',
                     command = hide_show
                     )
 next_button.grid   (
-                    row=1,
-                    column=1,
+                    row=2,
+                    column=0,
                     sticky='w'
                     )
 
