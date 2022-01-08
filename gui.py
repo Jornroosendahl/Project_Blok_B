@@ -11,7 +11,7 @@ root.iconphoto(False,tkinter.PhotoImage(file='Steam.png'))
 #resizing is false
 root.resizable(width=True,height=False)
 #set window size
-root.geometry('500x400')
+root.geometry('800x400')
 
 var_naam = StringVar()
 var_naam.set(eerste_spel_naam())
