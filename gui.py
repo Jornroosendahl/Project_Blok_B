@@ -7,7 +7,7 @@ root = Tk()
 #window title
 root.title('Steam')
 #window icon
-root.iconphoto(False,tkinter.PhotoImage(file='Steam.png'))
+#root.iconphoto(False,tkinter.PhotoImage(file='Steam.png'))
 #resizing is false
 root.resizable(width=True,height=False)
 #set window size
