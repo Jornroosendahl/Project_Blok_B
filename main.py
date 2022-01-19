@@ -31,3 +31,31 @@ def steam_sort():
     lijst = sorted(data,key=lambda i: i['price'])
     #,reverse=True om om te keren --- price veranderen in iets anders om daarop te sorteren
     return lijst
+
+def rating():
+    global teller
+    spel = data[teller]
+    for i in spel:
+        if "positive_ratings" in i:
+            positive = i
+        if "negative_ratings":
+            negative = i
+    totaal = positive + negative
+    rating = positive/totaal
+    if rating > 0 and rating <= 0.125:
+        lampjes = 1
+    elif rating > 0.125 and rating <= 0.25:
+        lampjes = 2
+    elif rating > 0.25 and rating <= 0.375:
+        lampjes = 3
+    elif rating > 0.375 and rating <= 0.5:
+        lampjes = 4
+    elif rating > 0.5 and rating <= 0.625:
+        lampjes = 5
+    elif rating > 0.625 and rating <= 0.75:
+        lampjes = 6
+    elif rating > 0.75 and rating <= 0.875:
+        lampjes = 7
+    elif rating > 0.875 and rating <= 1:
+        lampjes = 8
+    return lampjes
