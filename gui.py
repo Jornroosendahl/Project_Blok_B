@@ -79,4 +79,71 @@ next_button.grid   (
                     )
 
 #show window
+#mainloop()
+
+# het importeren van de gespecificeerde module
+#import matplotlib.pyplot as plt
+
+# x aswaarden
+
+
+#x = [10,20,30,40,50,60,70,80,130,220,240,280,300,320,340,360,380,400,420,440,500,550,570,620,630,730,1002,1200]
+
+# corresponderende y-aswaarden
+
+#y = [7.19,3.99,3.99,3.99,3.99,3.99,7.19,7.19,3.99,7.19,7.19,0.0,7.19,3.99,0.0,0.0,5.79,7.19,5.79,0.0,7.19,7.19,0.0,7.19,0.0,0.0,5.99,3.99,]
+
+# het plotten van de punten
+
+#plt.plot(x, y)
+
+# het benoemen van de x-as
+
+#plt.xlabel('x – as')
+
+# het benoemen van de y-as
+
+#plt.ylabel('y – as')
+
+# het geven van een titel aan mijn grafiek
+
+#plt.title('Verhouding prijs en appid')
+
+# functie om de plot aan te duiden
+
+#plt.show()
+
+#show window
 mainloop()
+
+# het importeren van de gespecificeerde module
+import matplotlib.pyplot as plt
+
+# x aswaarden
+
+
+x = [10,20,30,40,50,60,70,80,130,220,240,280,300,320,340,360,380,400,420,440,500,550,570,620,630,730,1002,1200]
+
+# corresponderende y-aswaarden
+
+y = [317,62,34,184,415,10,83,43,205,402,400,214,134,32,81,184,137,301,623,278,566,801,520,83,6502,0,258,0]
+
+# het plotten van de punten
+
+plt.plot(x, y)
+
+# het benoemen van de x-as
+
+plt.xlabel('x – as')
+
+# het benoemen van de y-as
+
+plt.ylabel('y – as')
+
+# het geven van een titel aan mijn grafiek
+
+plt.title('Verhouding median playtime en appid')
+
+# functie om de plot aan te duiden
+
+plt.show()
