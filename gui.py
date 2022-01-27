@@ -1,6 +1,7 @@
-import tkinter
 from tkinter import *
 from main import *
+from RPI import *
+import matplotlib.pyplot as plt
 
 #base window
 root = Tk()
@@ -12,6 +13,35 @@ root.title('Steam')
 root.resizable(width=True,height=False)
 #set window size
 root.geometry('800x400')
+
+class check_button(Thread):
+
+    def __init__(self):
+        Thread.__init__(self)
+        self.b = False
+
+    def checkloop(self):
+        while True:
+            if GPIO.input(23) == 1:
+                if self.b == False:
+                    hide_show()
+                    time.sleep(0.2)
+                    self.b = True
+                else:
+
+                    self.b = False
+                while GPIO.input(23) == 1: pass
+
+
+def hide_info():
+    label_naam.grid_forget()
+    label_info.grid_forget()
+
+
+def hide_show():
+    hide_info()
+    show_info()
+
 
 var_naam = StringVar()
 var_naam.set(eerste_spel_naam())
@@ -54,6 +84,7 @@ def hide_info():
 def hide_show():
     hide_info()
     show_info()
+    hc595(rating())
 
 
 
@@ -114,10 +145,13 @@ next_button.grid   (
 #plt.show()
 
 #show window
+chk1 = check_button()
+c1 = Thread(target=chk1.checkloop)
+c1.start()
 mainloop()
 
 # het importeren van de gespecificeerde module
-import matplotlib.pyplot as plt
+
 
 # x aswaarden
 

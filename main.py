@@ -37,9 +37,9 @@ def rating():
     spel = data[teller]
     for i in spel:
         if "positive_ratings" in i:
-            positive = i
-        if "negative_ratings":
-            negative = i
+            positive = spel[i]
+        if "negative_ratings" in i:
+            negative = spel[i]
     totaal = positive + negative
     rating = positive/totaal
     if rating > 0 and rating <= 0.125:
