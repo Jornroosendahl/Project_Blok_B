@@ -28,7 +28,6 @@ class check_button(Thread):
                     time.sleep(0.2)
                     self.b = True
                 else:
-
                     self.b = False
                 while GPIO.input(23) == 1: pass
 
