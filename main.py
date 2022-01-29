@@ -32,6 +32,10 @@ def steam_sort():
     #,reverse=True om om te keren --- price veranderen in iets anders om daarop te sorteren
     return lijst
 
+# def search():
+#     for i in data:
+
+
 def rating():
     global teller
     spel = data[teller]

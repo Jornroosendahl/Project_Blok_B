@@ -1,7 +1,7 @@
 from tkinter import *
 from main import *
 from RPI import *
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 #base window
 root = Tk()
@@ -84,6 +84,9 @@ def hide_show():
     hide_info()
     show_info()
     hc595(rating())
+def entry_waarde():
+    waarde = zoekveld.get()
+    label_zoekveld.config(text=str(waarde))
 
 
 
@@ -107,6 +110,29 @@ next_button.grid   (
                     column=0,
                     sticky='w'
                     )
+
+zoekveld = Entry    (
+                    master=root,
+
+                    )
+zoekveld.grid       (
+                    row=4,
+                    column=0,
+                    sticky='w'
+                    )
+zoekknop = Button   (master=root,
+                     text='search',
+                     command=entry_waarde)
+zoekknop.grid       (row=5,
+                     column=0,
+                     sticky='w'
+                    )
+label_zoekveld = Label(
+                    master=root,
+                    text='Zoekveld:')
+label_zoekveld.grid (row=3,
+                     column=0,
+                     sticky='w')
 
 #show window
 #mainloop()
