@@ -1,6 +1,8 @@
 from tkinter import *
 from main import *
 from RPI import *
+with open('steam.json') as json_file:
+    data = json.load(json_file)
 #import matplotlib.pyplot as plt
 
 #base window
@@ -40,6 +42,7 @@ def hide_info():
 def hide_show():
     hide_info()
     show_info()
+
 
 
 var_naam = StringVar()
@@ -86,8 +89,35 @@ def hide_show():
     hc595(rating())
 def entry_waarde():
     waarde = zoekveld.get()
-    label_zoekveld.config(text=str(waarde))
+    return waarde
 
+
+def search():
+    global label_zoeknaam
+    for i in data[0:50]:
+        for x in i:
+            if x == 'name':
+                if entry_waarde() in i[x]:
+                    #label_naam.config(text=i[x])
+                    try:
+                        label_zoeknaam.destroy()
+                    except:
+                        print('Nothing to destroy')
+                    label_zoeknaam = Label(master=root,
+                                           text=i[x],
+                                           background = 'white',
+                                           font='Helvetica 25 bold')
+
+
+
+                    label_zoeknaam.grid(row=7,
+                                        column=0,
+                                        sticky='w')
+                    return
+
+def forget():
+    global label_zoeknaam
+    label_zoeknaam.destroy()
 
 
 # back_button = Button(
@@ -122,11 +152,11 @@ zoekveld.grid       (
                     )
 zoekknop = Button   (master=root,
                      text='search',
-                     command=entry_waarde)
+                     command=search)
 zoekknop.grid       (row=5,
                      column=0,
-                     sticky='w'
-                    )
+                     sticky='w')
+
 label_zoekveld = Label(
                     master=root,
                     text='Zoekveld:')
