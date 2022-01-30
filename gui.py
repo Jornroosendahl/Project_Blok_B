@@ -97,10 +97,10 @@ def search():
     for i in data[0:50]:
         for x in i:
             if x == 'name':
-                if entry_waarde() in i[x]:
-                    #label_naam.config(text=i[x])
+                if entry_waarde() in i[x] or entry_waarde() in str(i[x]).lower():
                     try:
                         label_zoeknaam.destroy()
+                        label_zoekinfo.destroy()
                     except:
                         print('Nothing to destroy')
                     label_zoeknaam = Label(master=root,
@@ -111,6 +111,29 @@ def search():
 
 
                     label_zoeknaam.grid(row=7,
+                                        column=0,
+                                        sticky='w')
+                    for x in i:
+                        if x == 'appid':
+                            zoek_id = 'AppID:' + str(i[x])
+                        if x == 'release_date':
+                            zoek_release_date = 'Release_date:' + str(i[x])
+                        if x == 'developer':
+                            zoek_developer = 'Developer:' + str(i[x])
+                        if x == 'publisher':
+                            zoek_publisher = 'Publisher:' + str(i[x])
+                        if x == 'platforms':
+                            zoek_platforms = 'Platforms:' + str(i[x])
+                        if x == 'genres':
+                            zoek_genres = 'Genres:' + str(i[x])
+                        if x == 'price':
+                            zoek_price = 'Price:' + str(i[x])
+                    zoek_info = zoek_id + '\n' + zoek_release_date + '\n' + zoek_developer + '\n' + zoek_publisher + '\n' + zoek_platforms + '\n' + zoek_genres + '\n' + zoek_price
+
+                    label_zoekinfo = Label(master=root,
+                                           text=zoek_info,
+                                           background='white')
+                    label_zoekinfo.grid(row=8,
                                         column=0,
                                         sticky='w')
                     return
