@@ -275,7 +275,7 @@ frequentieveld.grid (
                      row=10,
                      column=0,
                      sticky='w'
-)
+                    )
 # rngeveld = Entry(
 #                  master=root
 #                  )
@@ -336,11 +336,11 @@ label_frequentieveld.grid (row=9,
 # x aswaarden
 
 
-# x = [10,20,30,40,50,60,70,80,130,220,240,280,300,320,340,360,380,400,420,440,500,550,570,620,630,730,1002,1200]
+x1 = [10,20,30,40,50,60,70,80,130,220,240,280,300,320,340,360,380,400,420,440,500,550,570,620,630,730,1002,1200]
 
 # corresponderende y-aswaarden
 
-# y = [7.19,3.99,3.99,3.99,3.99,3.99,7.19,7.19,3.99,7.19,7.19,0.0,7.19,3.99,0.0,0.0,5.79,7.19,5.79,0.0,7.19,7.19,0.0,7.19,0.0,0.0,5.99,3.99,]
+y1 = [7.19,3.99,3.99,3.99,3.99,3.99,7.19,7.19,3.99,7.19,7.19,0.0,7.19,3.99,0.0,0.0,5.79,7.19,5.79,0.0,7.19,7.19,0.0,7.19,0.0,0.0,5.99,3.99,]
 
 # het plotten van de punten
 
@@ -416,6 +416,33 @@ def plot():
     canvas.get_tk_widget().grid(row=500,
                                 column=0)
 
-plot()
+
+
+medplaytime_button = Button(master=root,
+                            command=plot,
+                            text='Plot 1')
+medplaytime_button.grid(row=499,
+                        column=0)
+
+def plot2():
+    fig = Figure(figsize=(5,4),
+                 dpi=100)
+    plot1 = fig.add_subplot(111)
+    plot1.plot(x1,y1)
+    plot1.set_ylabel('Prijs')
+    plot1.set_xlabel('AppID')
+    plot1.set_title('Verhouding prijs en appid')
+
+    canvas = FigureCanvasTkAgg(fig,
+                               master=root)
+    canvas.draw()
+    canvas.get_tk_widget().grid(row=500,
+                                column=0)
+
+prijs_button = Button       (master=root,
+                            command=plot2,
+                            text='Plot 2')
+prijs_button.grid          (row=499,
+                            column=1)
 
 mainloop()
