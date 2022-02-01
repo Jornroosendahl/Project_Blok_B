@@ -18,6 +18,7 @@ root.title('Steam')
 # root.iconphoto(False,tkinter.PhotoImage(file='Steam.png'))
 # resizing is false
 root.resizable(width=True, height=False)
+
 #set background image
 bg = ImageTk.PhotoImage(Image.open('background.jpg'))
 bg_label=Label(master=root,
@@ -301,6 +302,7 @@ frequentieknop.grid     (
 label_rngeveld = Label(
                    master=root,
                    text='range:')
+
 label_rngeveld.grid(
                     row=13,
                     column=0,
@@ -321,7 +323,7 @@ label_sorteerveld.grid (row=30,
                         sticky='w')
 label_frequentieveld = Label(
                             master=root,
-                            text='Frequentieveld:')
+                            text='Frequentieveld:',)
 label_frequentieveld.grid (row=9,
                            column=0,
                            sticky='w')
