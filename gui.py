@@ -4,11 +4,11 @@ from RPI import *
 from PIL import ImageTk, Image
 import sys
 import tkinter.messagebox as messagebox
-
+# import matplotlib.pyplot as plt
 
 with open('steam.json') as json_file:
     data = json.load(json_file)
-# import matplotlib.pyplot as plt
+
 
 # base window
 root = Tk()
