@@ -1,10 +1,9 @@
 from tkinter import *
 from main import *
-#from RPI import *
+# from RPI import *
 from PIL import ImageTk, Image
 import sys
 import tkinter.messagebox as messagebox
-import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,NavigationToolbar2Tk)
 
@@ -19,7 +18,7 @@ root.title('Steam')
 # window icon
 # root.iconphoto(False,tkinter.PhotoImage(file='Steam.png'))
 # resizing is false
-root.resizable(width=True, height=False)
+root.resizable(width=True, height=True)
 
 #set background image
 bg = ImageTk.PhotoImage(Image.open('background.jpg'))
@@ -28,7 +27,7 @@ bg_label=Label(master=root,
 bg_label.place(x=0,y=0)
 
 # set window size
-root.geometry('800x800')
+root.geometry('800x1000')
 
 
 # class check_button(Thread):
@@ -330,77 +329,35 @@ label_frequentieveld.grid (row=9,
                            column=0,
                            sticky='w')
 
-# het importeren van de gespecificeerde module
-# import matplotlib.pyplot as plt
 
 # x aswaarden
-
-
 x1 = [10,20,30,40,50,60,70,80,130,220,240,280,300,320,340,360,380,400,420,440,500,550,570,620,630,730,1002,1200]
 
 # corresponderende y-aswaarden
-
 y1 = [7.19,3.99,3.99,3.99,3.99,3.99,7.19,7.19,3.99,7.19,7.19,0.0,7.19,3.99,0.0,0.0,5.79,7.19,5.79,0.0,7.19,7.19,0.0,7.19,0.0,0.0,5.99,3.99,]
 
-# het plotten van de punten
 
-# plt.plot(x, y)
 
-# het benoemen van de x-as
-
-# plt.xlabel('x – as')
-
-# het benoemen van de y-as
-
-# plt.ylabel('y – as')
-
-# het geven van een titel aan mijn grafiek
-
-# plt.title('Verhouding prijs en appid')
-
-# functie om de plot aan te duiden
-
-# plt.show()
-
-#show window
+#Start de thread
 # chk1 = check_button()
 # c1 = Thread(target=chk1.checkloop)
 # c1.start()
 
 
-# het importeren van de gespecificeerde module
+
 
 
 # x aswaarden
-
-
 x = [10, 20, 30, 40, 50, 60, 70, 80, 130, 220, 240, 280, 300, 320, 340, 360, 380, 400, 420, 440, 500, 550, 570, 620,
      630, 730, 1002, 1200]
 
 # corresponderende y-aswaarden
-
 y = [317, 62, 34, 184, 415, 10, 83, 43, 205, 402, 400, 214, 134, 32, 81, 184, 137, 301, 623, 278, 566, 801, 520, 83,
      6502, 0, 258, 0]
 
-# het plotten van de punten
 
-plt.plot(x, y)
 
-# het benoemen van de x-as
 
-plt.xlabel('x – as')
-
-# het benoemen van de y-as
-
-plt.ylabel('y – as')
-
-# het geven van een titel aan mijn grafiek
-
-plt.title('Verhouding median playtime en appid')
-
-# functie om de plot aan te duiden
-
-plt.show()
 def plot():
     fig = Figure(figsize=(5,4),
                  dpi=100)
@@ -444,5 +401,5 @@ prijs_button = Button       (master=root,
                             text='Plot 2')
 prijs_button.grid          (row=499,
                             column=1)
-
+# show window
 mainloop()
