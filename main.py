@@ -19,13 +19,40 @@ def eerste_spel_info():
             app_id = 'AppID:' + str(spel[i])
         if 'release_date' in i:
             release_date = 'Release_date:' + str(spel[i])
+        if 'publisher' in i:
+            publisher = 'Publisher:' + str(spel[i])
         if 'genres' in i:
             genre = 'Genre:' + str(spel[i])
         if 'price' in i:
             price = 'Price:' + str(spel[i])
-    info = app_id + '\n' + release_date + '\n' + genre + '\n' + price + '\n' + ratingdash()
-    teller +=1
+        if 'positive_ratings' in i:
+            positive = 'Positive_ratings:' + str(spel[i])
+        if 'negative_ratings' in i:
+            negative = 'Negative_ratings' + str(spel[i])
+        if 'average_playtime' in i:
+            average = 'Average_playtime' + str(spel[i])
+        if 'median_playtime' in i:
+            median = 'Median_playtime:' + str(spel[i])
+    info = app_id + '\n' + release_date + '\n' + publisher + '\n' + genre + '\n' + price + '\n' + positive + '\n' + negative + '\n' + average + '\n' + median
+    teller += 1
     return info
+
+def x_as():
+    global teller
+    spel = data[teller]
+    for i in spel:
+        if 'appid' in i:
+            x = 'appid' + str(spel[i])
+    info = x + '\n'
+    return info
+
+
+# def eerste_median():
+#     spel = data[teller]
+#     for i in spel:
+#         if 'median_playtime' in i:
+#             mediaan = spel[i]
+#     return mediaan
 
 def steam_sort():
     lijst = sorted(data,key=lambda i: i['price'])
@@ -71,3 +98,17 @@ def rating():
     elif rating > 0.875 and rating <= 1:
         lampjes = 8
     return lampjes
+
+# def selection_sort(ar):
+#     global teller
+#     spel = data[teller]
+#
+#     for i in range (len(ar)):
+#         j = i
+#         while j > 0:
+#             if ar[j] < ar[j - 1]:
+#                 temp = ar[j]
+#                 ar[j] = ar[j - 1]
+#                 ar[j - 1] = temp
+#             else:
+#                 break
