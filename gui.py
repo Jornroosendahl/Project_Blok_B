@@ -1,8 +1,10 @@
 from tkinter import *
 from main import *
 from RPI import *
+from PIL import ImageTk, Image
 import sys
 import tkinter.messagebox as messagebox
+
 
 with open('steam.json') as json_file:
     data = json.load(json_file)
@@ -16,26 +18,32 @@ root.title('Steam')
 # root.iconphoto(False,tkinter.PhotoImage(file='Steam.png'))
 # resizing is false
 root.resizable(width=True, height=False)
+#set background image
+bg = ImageTk.PhotoImage(Image.open('background.jpg'))
+bg_label=Label(master=root,
+               image=bg)
+bg_label.place(x=0,y=0)
+
 # set window size
 root.geometry('800x800')
 
 
 class check_button(Thread):
 
-    def __init__(self):
-        Thread.__init__(self)
-        self.b = False
+     def __init__(self):
+         Thread.__init__(self)
+         self.b = False
 
-    def checkloop(self):
-        while True:
-            if GPIO.input(23) == 1:
-                if self.b == False:
-                    hide_show()
-                    time.sleep(0.2)
-                    self.b = True
-                else:
-                    self.b = False
-                while GPIO.input(23) == 1: pass
+     def checkloop(self):
+         while True:
+             if GPIO.input(23) == 1:
+                 if self.b == False:
+                     hide_show()
+                     time.sleep(0.2)
+                     self.b = True
+                 else:
+                     self.b = False
+                 while GPIO.input(23) == 1: pass
 
 
 def hide_info():
@@ -350,7 +358,7 @@ label_frequentieveld.grid (row=9,
 
 # plt.show()
 
-# show window
+#show window
 chk1 = check_button()
 c1 = Thread(target=chk1.checkloop)
 c1.start()
