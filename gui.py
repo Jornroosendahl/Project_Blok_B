@@ -428,7 +428,7 @@ def plot2():
     fig = Figure(figsize=(5,4),
                  dpi=100)
     plot1 = fig.add_subplot(111)
-    plot1.plot(x1,y1)
+    plot1.plot(y1,x1)
     plot1.set_ylabel('Prijs')
     plot1.set_xlabel('AppID')
     plot1.set_title('Verhouding prijs en appid')
