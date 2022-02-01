@@ -1,6 +1,8 @@
 from tkinter import *
 from main import *
 from RPI import *
+import sys
+import tkinter.messagebox as messagebox
 with open('steam.json') as json_file:
     data = json.load(json_file)
 #import matplotlib.pyplot as plt
@@ -100,13 +102,14 @@ def search():
                 if entry_waarde() in i[x] or entry_waarde() in str(i[x]).lower():
                     try:
                         label_zoeknaam.destroy()
-                        label_zoekinfo.destroy()
+                        #label_zoekinfo.destroy()
                     except:
                         print('Nothing to destroy')
                     label_zoeknaam = Label(master=root,
                                            text=i[x],
                                            background = 'white',
                                            font='Helvetica 25 bold')
+                    zoek_naam = i[x]
 
 
 
@@ -133,26 +136,16 @@ def search():
                     label_zoekinfo = Label(master=root,
                                            text=zoek_info,
                                            background='white')
-                    label_zoekinfo.grid(row=8,
-                                        column=0,
-                                        sticky='w')
-                    return
+                    # label_zoekinfo.grid(row=8,
+                    #                     column=0,
+                    #                     sticky='w')
+                    messagebox.showinfo(zoek_naam, zoek_info)
 
 def forget():
     global label_zoeknaam
     label_zoeknaam.destroy()
 
 
-# back_button = Button(
-#                     master=root,
-#                     text='Back',
-#                     command = hide_info,
-#                     )
-# back_button.grid    (
-#                     row=1,
-#                     column=0,
-#                     sticky='w'
-#                     )
 next_button = Button(
                     master=root,
                     text='Next',
