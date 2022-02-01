@@ -1,10 +1,12 @@
 from tkinter import *
 from main import *
-from RPI import *
+#from RPI import *
 from PIL import ImageTk, Image
 import sys
 import tkinter.messagebox as messagebox
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,NavigationToolbar2Tk)
 
 with open('steam.json') as json_file:
     data = json.load(json_file)
@@ -29,22 +31,22 @@ bg_label.place(x=0,y=0)
 root.geometry('800x800')
 
 
-class check_button(Thread):
-
-     def __init__(self):
-         Thread.__init__(self)
-         self.b = False
-
-     def checkloop(self):
-         while True:
-             if GPIO.input(23) == 1:
-                 if self.b == False:
-                     hide_show()
-                     time.sleep(0.2)
-                     self.b = True
-                 else:
-                     self.b = False
-                 while GPIO.input(23) == 1: pass
+# class check_button(Thread):
+#
+#      def __init__(self):
+#          Thread.__init__(self)
+#          self.b = False
+#
+#      def checkloop(self):
+#          while True:
+#              if GPIO.input(23) == 1:
+#                  if self.b == False:
+#                      hide_show()
+#                      time.sleep(0.2)
+#                      self.b = True
+#                  else:
+#                      self.b = False
+#                  while GPIO.input(23) == 1: pass
 
 
 def hide_info():
@@ -361,10 +363,10 @@ label_frequentieveld.grid (row=9,
 # plt.show()
 
 #show window
-chk1 = check_button()
-c1 = Thread(target=chk1.checkloop)
-c1.start()
-mainloop()
+# chk1 = check_button()
+# c1 = Thread(target=chk1.checkloop)
+# c1.start()
+
 
 # het importeren van de gespecificeerde module
 
@@ -399,3 +401,21 @@ plt.title('Verhouding median playtime en appid')
 # functie om de plot aan te duiden
 
 plt.show()
+def plot():
+    fig = Figure(figsize=(5,4),
+                 dpi=100)
+    plot1 = fig.add_subplot(111)
+    plot1.plot(x,y)
+    plot1.set_ylabel('Median playtime')
+    plot1.set_xlabel('AppID')
+    plot1.set_title('Verhouding median playtime en appid')
+
+    canvas = FigureCanvasTkAgg(fig,
+                               master=root)
+    canvas.draw()
+    canvas.get_tk_widget().grid(row=500,
+                                column=0)
+
+plot()
+
+mainloop()
