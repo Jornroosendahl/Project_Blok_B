@@ -1,6 +1,6 @@
 from tkinter import *
 from main import *
-# from RPI import *
+from RPI import *
 from PIL import ImageTk, Image
 import sys
 import tkinter.messagebox as messagebox
@@ -30,22 +30,22 @@ bg_label.place(x=0,y=0)
 root.geometry('800x1000')
 
 
-# class check_button(Thread):
-#
-#      def __init__(self):
-#          Thread.__init__(self)
-#          self.b = False
-#
-#      def checkloop(self):
-#          while True:
-#              if GPIO.input(23) == 1:
-#                  if self.b == False:
-#                      hide_show()
-#                      time.sleep(0.2)
-#                      self.b = True
-#                  else:
-#                      self.b = False
-#                  while GPIO.input(23) == 1: pass
+class check_button(Thread):
+
+     def __init__(self):
+         Thread.__init__(self)
+         self.b = False
+
+     def checkloop(self):
+         while True:
+             if GPIO.input(23) == 1:
+                 if self.b == False:
+                     hide_show()
+                     time.sleep(0.2)
+                     self.b = True
+                 else:
+                     self.b = False
+                 while GPIO.input(23) == 1: pass
 
 
 def hide_info():
@@ -339,9 +339,9 @@ y1 = [7.19,3.99,3.99,3.99,3.99,3.99,7.19,7.19,3.99,7.19,7.19,0.0,7.19,3.99,0.0,0
 
 
 #Start de thread
-# chk1 = check_button()
-# c1 = Thread(target=chk1.checkloop)
-# c1.start()
+chk1 = check_button()
+c1 = Thread(target=chk1.checkloop)
+c1.start()
 
 
 
