@@ -23,7 +23,7 @@ def eerste_spel_info():
             genre = 'Genre:' + str(spel[i])
         if 'price' in i:
             price = 'Price:' + str(spel[i])
-    info = app_id + '\n' + release_date + '\n' + genre + '\n' + price
+    info = app_id + '\n' + release_date + '\n' + genre + '\n' + price + '\n' + ratingdash()
     teller +=1
     return info
 
@@ -31,6 +31,18 @@ def steam_sort():
     lijst = sorted(data,key=lambda i: i['price'])
     #,reverse=True om om te keren --- price veranderen in iets anders om daarop te sorteren
     return lijst
+
+def ratingdash():
+    global teller
+    spel = data[teller]
+    for i in spel:
+        if "positive_ratings" in i:
+            positive = spel[i]
+        if "negative_ratings" in i:
+            negative = spel[i]
+    totaal = positive + negative
+    rating = 'Rating:' + str(round((positive/totaal)*10 ,2))
+    return str(rating)
 
 def rating():
     global teller
